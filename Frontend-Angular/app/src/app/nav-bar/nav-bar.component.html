@@ -1,0 +1,68 @@
+
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">Welcome</a>
+
+      <div class=" ">
+      </div>
+
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a  class="nav-link" routerLink="/home">Home </a>
+          </li>
+          <!-- <li class="nav-item" *ngIf="showAdminBoard">
+            <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+          </li>
+          <li class="nav-item" *ngIf="showModeratorBoard">
+            <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+          </li>
+          <li class="nav-item">
+            <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </li> -->
+        </ul>
+
+    
+  
+      <ul class="navbar-nav ml-auto " >
+
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        
+        <!-- 
+          <li class="nav-item ms-5 mx-3  ">
+          <a  class="nav-link" routerLink="/studentregister"> Student Sign-Up </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link right-2" routerLink="/speakerregister"> Speaker Sign-Up </a>
+        </li> -->
+  
+  
+  
+        <div class="dropdown position-absolute end-0 nav-item">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
+            sign up 
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/speakerregister">As Speaker </a></li>
+            <li><a class="dropdown-item" routerLink="/studentregister"> As Student </a></li>
+          </ul>
+        </div>
+      </ul>
+    </nav>
+  
+  
+  
+  
+  

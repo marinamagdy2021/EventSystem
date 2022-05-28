@@ -1,0 +1,84 @@
+<!-- <app-studentnav-bar></app-studentnav-bar> -->
+
+
+
+<div class="container bg-light">
+        
+  <div class="  row fs-1   ">
+    <div class="col-10 my-5 text-primary fw-bold">
+      Edit Student Information
+    </div>
+    <div class="col-2 my-5 text-primary fw-bold">
+      <a class="fs-5 btn btn-outline-dark btn-lg" routerLink="/admin/students"> back </a>
+
+    </div>
+</div>
+<hr>
+
+<div id="sect1">       
+    <div class="col-md-12">
+        <div class="card card-container">
+            <img
+            id="profile-img"
+        src="https://www.jing.fm/clipimg/detail/398-3981675_avatar-for-login-form.png"
+        class="profile-img-card"
+      />
+
+      <form  name="form"  (ngSubmit)="MyForm.form.valid && onSubmit() " novalidate #MyForm="ngForm" *ngIf="!isSuccessful" >
+
+        <div class="form-group">
+          <label for="email" class="fs-5">Email</label>
+            <input  type="email"  
+                    class="form-control form-control-lg" 
+                    [pattern]="emailPattern" 
+                    name="email" 
+                    [(ngModel)]="user.email" 
+                    placeholder ="Enter your Email" 
+                    required 
+                    maxlength="20"
+                    #email="ngModel"/>
+          <div class="alert alert-danger fs-5" role="alert" *ngIf="email.errors && MyForm.submitted" >
+            <div *ngIf="email.errors['required']"> Email is required </div>
+            <div *ngIf="email.errors['maxlength']">
+                email must be at most 20 characters
+              </div>
+            email is invalid !
+          </div>
+        </div>
+
+
+
+        
+      
+        <input type="text" name="role" value="student" hidden > 
+        <div class="form-group d-grid mx-auto my-5"   >
+            <button class="btn btn-primary btn-lg">
+                Edit
+            </button>
+        </div>
+        
+        
+          <div class="form-group form-control-lg" *ngIf="!isSuccessful">
+            <div
+            class="alert alert-danger form-control-lg"
+            role="alert"
+            *ngIf="MyForm.submitted  "
+            >
+            edit failed: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+
+        <div  *ngIf="isSuccessful">
+
+          <div class="alert alert-success" >
+              Your edition is successful!
+            </div>
+            <a class="fs-5 btn btn-outline-success btn-lg" routerLink="/admin/students"> back to list  </a>
+        </div>
+    </div>
+</div>
+
+</div> 
+
+

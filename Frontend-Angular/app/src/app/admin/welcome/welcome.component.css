@@ -1,0 +1,15 @@
+.img{
+    width: 200px;
+}
+
+
+
+header {
+	background:
+    url(https://c4.wallpaperflare.com/wallpaper/22/240/855/texture-gradient-simple-background-blue-wallpaper-preview.jpg);
+	height: 100vh;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}

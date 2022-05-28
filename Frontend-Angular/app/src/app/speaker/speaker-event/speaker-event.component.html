@@ -1,0 +1,73 @@
+<app-speakernav-bar></app-speakernav-bar>
+
+
+
+<div class="container bg-light">
+        
+    <div class="  row fs-1   ">
+    <div class="col-9 my-5 text-primary fw-bold" >
+        Events you are registered in 
+    </div>
+        <div class="col-2 my-5 ">
+            <a class="btn btn-dark fs-3" routerLink="/speakers" > Back</a>
+        </div>
+    </div>
+<hr>
+
+<table class="fs-3 table table-striped table-sm table-bordered table-hover table-inverse table-inverse table-responsive">
+    <thead class="thead-inverse|thead-default">
+        <tr>
+            <th>title</th>
+            <th>date</th>
+            <th>id</th>
+            <th>main speaker</th>
+            <th>other speakers</th>
+            <th>students</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+            
+             <tr *ngFor="let item of event">
+                <td scope="row">{{item.title}}</td>
+                <td>{{item.date|date}}</td>
+                <td>{{item._id}}</td>
+                <td>{{item.mainSpeaker.username}}</td>
+                <td> 
+                    <tr *ngFor="let ite of item.otherSpeakers">
+                        <td> {{ite.username}} </td> 
+                    </tr> 
+                    
+                </td>
+                <td><tr *ngFor="let ite of item.students">
+                    <td> {{ite.email}} </td> 
+                </tr>
+            </td>  
+            
+            
+        </tr> 
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<p>
+    {{event|json}}
+</p>
+
+<div class="form-group form-control-lg">
+    <div
+    class="alert alert-danger form-control-lg fs-3"
+    role="alert"
+    *ngIf="isLoginFailed"
+    >
+    no events founded for you
+    <!-- : {{ errorMessage }} -->
+  </div>
+</div>

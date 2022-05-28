@@ -1,0 +1,121 @@
+<app-nav-bar-admin></app-nav-bar-admin>
+
+
+
+<div id="sect1">       
+    <h1 style="text-align: center; padding-top: 50px; "> Registeration as new Speaker </h1>
+    <div class="col-md-12">
+        <div class="card card-container">
+            <img
+            id="profile-img"
+            src="https://st1.bgr.in/wp-content/uploads/2021/08/Facebook-Workplaces-app.jpg" 
+            class="profile-img-card"/>
+            
+            <form *ngIf="!isSuccessful" name="form"  (ngSubmit)="MyForm.form.valid && onSubmit() " 
+            novalidate #MyForm="ngForm" >
+            
+            <div class=" form-group">
+                <label for="title" class="fs-5">Title</label>
+              <input  type="text"  
+              class="form-control form-control-lg"  
+                      name="t" 
+                      [(ngModel)]="event.title" 
+                      placeholder ="Enter Event title" 
+                      required 
+                      maxlength="20"
+                      #t ="ngModel"/>
+       
+            <div class="alert alert-danger fs-5" role="alert" *ngIf="t.errors && MyForm.submitted" >
+              <div *ngIf="t.errors['required']"> title is required </div>
+              <div *ngIf="t.errors['maxlength']">
+                title must be at most 20 characters
+                </div>
+            </div> 
+        </div>
+        
+
+
+      <div class="form-group">
+        <label for="student" class="fs-5">Select Students</label>
+        <p-multiSelect [options]="std" [(ngModel)]="selectedStudent" class="d-grid mx-auto " 
+                        optionValue="_id" required="true" optionLabel="email" display="chip" 
+                        #student="ngModel" name="student" ></p-multiSelect>
+         
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="student.errors && MyForm.submitted" >
+          <div *ngIf="student.errors['required']"> select students is required </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="speakers" class="fs-5">Select other speakers</label>
+        <p-multiSelect [options]="spk" [(ngModel)]="otherSpeakers" required="true"  optionValue="_id"
+        optionLabel="username" class="d-grid mx-auto " display="chip" #speakers="ngModel" 
+        name="speakers" ></p-multiSelect>
+         
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="speakers.errors && MyForm.submitted" >
+          <div *ngIf="speakers.errors['required']"> select speakers is required </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="date" class="fs-5">Select date</label>
+        <p-calendar [(ngModel)]="event.date" #date="ngModel" require="true" 
+        name="date" dateFormat="yy-mm-dd" class="d-grid mx-auto "></p-calendar>
+         
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="date.errors && MyForm.submitted" >
+          <div *ngIf="date.errors['require']"> select date is required </div>
+        </div>
+      </div>
+
+
+<div class="form-group">
+    <label for="mSpeaker" class="fs-5">Select mainspeakers</label>
+            <p-dropdown name="mSpeaker"
+            [options]="spk" 
+            [(ngModel)]="mainSpeaker" 
+            optionLabel="username"   
+            require
+            #mSpeaker="ngModel"
+            optionValue="_id"
+            [ngModelOptions]="{standalone: true}" class="d-grid mx-auto "></p-dropdown>
+            <div class="alert alert-danger fs-5" role="alert" *ngIf="mSpeaker.errors && MyForm.submitted" >
+                <div *ngIf="mSpeaker.errors['require']"> select main speaker is required </div>
+              </div>
+</div>
+
+
+
+
+
+      <div class="form-group d-grid mx-auto my-5"   >
+          <button class="btn btn-primary btn-lg">
+              Edit event
+          </button>
+      </div>
+    
+      
+      
+        <div class="form-group form-control-lg">
+            <div
+            class="alert alert-danger form-control-lg"
+            role="alert"
+            *ngIf="MyForm.submitted && isSignUpFailed "
+          >
+          edition failed: {{ errorMessage }}
+            </div>
+      </div>
+    </form>
+
+      <div  *ngIf="isSuccessful">
+
+        <div class="alert alert-success" >
+            Your edition is successful!
+          </div>
+
+          <a class="fs-5 btn btn-outline-success btn-lg" routerLink="/admin/events"> Go to events  </a>
+        </div>
+  </div>
+</div>
+
+</div> 
+

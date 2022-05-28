@@ -1,0 +1,96 @@
+
+<div id="sect1" *ngIf="!isLoggedIn" >       
+  <app-nav-bar></app-nav-bar>
+      
+    <div  class="col-md-12">
+        <div class="card card-container">
+            <img
+            id="profile-img"
+        src="https://www.jing.fm/clipimg/detail/398-3981675_avatar-for-login-form.png"
+        class="profile-img-card"
+      />
+      <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="onSubmit()" #MyForm="ngForm" >
+          <!-- novalidate -->
+        <div class="form-group">
+          <label for="email" class="fs-5">Email</label>
+          
+            <input type="email"  class="form-control form-control-lg" [pattern]="emailPattern" name="email"
+             [(ngModel)]="user.email" 
+            placeholder ="Enter your Email" required #email="ngModel"/>
+          <div class="alert alert-danger fs-5" role="alert" *ngIf="email.errors && MyForm.submitted" >
+          email is invalid !
+          </div>
+        </div>
+
+
+
+        
+        <div class="form-group">
+          <label for="password" class="fs-5">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+            minlength="3"
+            #password="ngModel"
+            placeholder ="Enter your password"
+            
+            />
+            <div
+            class="alert alert-danger fs-5"
+            role="alert"
+            *ngIf="password.errors && MyForm.submitted"
+            >
+            <div *ngIf="password.errors['required']">Password is required</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 3 characters
+            </div>
+        </div>
+        </div>
+        <div class="my-5 align-center">
+            <!-- <p-selectButton [options]="roles"  [(ngModel)]="selectRole" optionLabel="name" optionValue="role"></p-selectButton> -->
+            <label for="role" class="fs-5  fw-bold">Who Are You <span style="color: red;"  >?</span> </label>
+            
+            <select name="role" class="form-select form-select-lg" aria-label="Default select example"  #role="ngModel"[(ngModel)]="user.role">
+                <option class="fs-5" value="admin"> Admin </option>
+                <option class="fs-5" value="student">Student </option>
+                <option class="fs-5" value="speaker"> Speaker</option>
+            </select>
+            <!-- <p-selectButton [options]="roles" [(ngModel)]="selectedCityCode" optionLabel="name" optionValue="code"></p-selectButton>
+            -->
+        </div>
+        <div class="form-group d-grid mx-auto"   >
+            <button class="btn btn-primary btn-lg">
+                Login
+            </button>
+        </div>
+        
+          <div class="form-group form-control-lg">
+            <div
+            class="alert alert-danger form-control-lg"
+            role="alert"
+            *ngIf="MyForm.submitted && isLoginFailed"
+            >
+            Login failed: {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+
+<div class="form-group d-grid mx-auto"   >
+
+    <a routerLink="/studentregister" class="btn btn-outline-warning btn-lg my-3">  Register As Student</a>
+    <a routerLink="/speakerregister" class="btn btn-outline-danger btn-lg">  Register As Speaker</a>
+
+</div>
+
+<!-- <div class="alert alert-success" *ngIf="isLoggedIn">
+    Logged in as {{ roles }}.
+</div> -->
+</div>
+</div>
+
+</div> 
+
+

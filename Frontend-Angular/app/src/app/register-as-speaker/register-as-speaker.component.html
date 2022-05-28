@@ -1,0 +1,189 @@
+<app-nav-bar></app-nav-bar>
+
+<div id="sect1">       
+    <h1 style="text-align: center; padding-top: 50px; "> Registeration as new Speaker </h1>
+  <div class="col-md-12">
+      <div class="card card-container">
+          <img
+          id="profile-img"
+      src="https://www.jing.fm/clipimg/detail/398-3981675_avatar-for-login-form.png"
+      class="profile-img-card"
+    />
+    <form *ngIf="!isSuccessful" name="form"  (ngSubmit)="MyForm.form.valid && onSubmit() " novalidate #MyForm="ngForm" >
+
+        <div class="form-group">
+            <label for="username" class="fs-5">UserName</label>
+              <input  type="text"  
+                      class="form-control form-control-lg"  
+                      name="username" 
+                      [(ngModel)]="user.username" 
+                      placeholder ="Enter your username" 
+                      required 
+                      maxlength="10"
+                      #username ="ngModel"/>
+
+            <div class="alert alert-danger fs-5" role="alert" *ngIf="username.errors && MyForm.submitted" >
+              <div *ngIf="username.errors['required']"> username is required </div>
+              <div *ngIf="username.errors['maxlength']">
+                  Username must be at most 20 characters
+                </div>
+            </div>
+          </div>
+    
+
+      <div class="form-group">
+        <label for="email" class="fs-5">Email</label>
+          <input  type="email"  
+                  class="form-control form-control-lg" 
+                  [pattern]="emailPattern" 
+                  name="email" 
+                  [(ngModel)]="user.email" 
+                  placeholder ="Enter your Email" 
+                  required 
+                  maxlength="20"
+                  #email="ngModel"/>
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="email.errors && MyForm.submitted" >
+          <div *ngIf="email.errors['required']"> Email is required </div>
+          <div *ngIf="email.errors['maxlength']">
+              Username must be at most 20 characters
+            </div>
+          email is invalid !
+        </div>
+      </div>
+
+
+
+      
+      <div class="form-group">
+          <label for="password" class="fs-5">Password</label>
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          name="password"
+          [(ngModel)]="user.password"
+          required
+          minlength="3"
+          #password="ngModel"
+          placeholder ="Enter your password"
+          />
+          <div
+          class="alert alert-danger fs-5"
+          role="alert"
+          *ngIf="password.errors && MyForm.submitted"
+          >
+              <div *ngIf="password.errors['required']">Password is required</div>
+              <div *ngIf="password.errors['minlength']">
+              Password must be at least 3 characters
+              </div>
+          </div>
+      </div>
+     
+
+      <div class="form-group">
+            <div class="row my-4">
+                <div class="col-4">
+                    <label for="city" class="fs-5">City</label>
+                </div>
+                <div class="col-6">
+                    <p-dropdown name="city"
+                    [options]="cities" 
+                    [(ngModel)]="selectedCityCode" 
+                    optionLabel="city"  optionValue="code" 
+                    require
+                    #city="ngModel"
+                    [ngModelOptions]="{standalone: true}" ></p-dropdown>
+                </div>
+            </div>
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="city.errors && MyForm.submitted" >
+            <div *ngIf="city.errors['require']"> city is required </div>
+        </div>
+      </div>
+
+
+      
+
+      <div class="form-group">
+        <div class="row my-4">
+            <div class="col-4">
+                <label for="street" class="fs-5">Street</label>
+            </div>
+        <div class="col-8">
+            <input  type="text"  
+                    class="form-control form-control-lg" 
+                  name="street" 
+                  [(ngModel)]="user.street" 
+                  placeholder ="Enter your Street" 
+                  required 
+                  maxlength="20"
+                  #street="ngModel"/>
+        </div>
+                </div>
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="street.errors && MyForm.submitted" >
+          <div *ngIf="street.errors['required']"> street is required </div>
+          <div *ngIf="street.errors['maxlength']">
+              Street must be at most 20 characters
+            </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="form-group">
+        <div class="row my-4">
+            <div class="col-4">
+                <label for="building" class="fs-5">building.No</label>
+            </div>
+        <div class="col-8">
+            <input  type="number"  
+                    class="form-control form-control-lg" 
+                  name="building" 
+                  [(ngModel)]="user.building" 
+                  placeholder ="Enter your building.No" 
+                  required 
+                  maxlength="5"
+                  #building="ngModel"/>
+        </div>
+                </div>
+        <div class="alert alert-danger fs-5" role="alert" *ngIf="building.errors && MyForm.submitted" >
+          <div *ngIf="building.errors['required']"> building is required </div>
+          <div *ngIf="building.errors['number']"> building is </div>
+          <div *ngIf="building.errors['maxlength']">
+            building must be at most 5 numbers
+            </div>
+        </div>
+      </div>
+
+
+      <div class="form-group d-grid mx-auto my-5"   >
+          <button class="btn btn-primary btn-lg">
+              SIGN-UP
+          </button>
+      </div>
+      
+      
+        <div class="form-group form-control-lg">
+          <div
+          class="alert alert-danger form-control-lg"
+          role="alert"
+          *ngIf="MyForm.submitted && isSignUpFailed "
+          >
+          signUp failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+      <div  *ngIf="isSuccessful">
+
+        <div class="alert alert-success" >
+            Your registration is successful!
+          </div>
+
+          <a class="fs-5 btn btn-outline-success btn-lg" routerLink="/login"> Go to login  </a>
+      </div>
+  </div>
+</div>
+
+</div> 
+
+

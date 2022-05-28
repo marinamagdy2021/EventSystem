@@ -1,0 +1,101 @@
+<app-speakernav-bar></app-speakernav-bar>
+
+
+<div>
+    
+    <div class="container bg-light">
+        
+        <div class="  row fs-1   ">
+        <div class="col-8 my-5 text-primary fw-bold" >
+            Speaker Information
+        </div>
+        <div class="col-2 my-5 ">
+            <a class="btn btn-primary fs-3" routerLink="/speakers/edit" > Edit profile </a>
+        </div>
+        <div class="col-2 my-5 ">
+            <a class="btn btn-danger fs-3" routerLink="/speakers/events" > Show Events </a>
+        </div>
+        </div>
+    <hr>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-6 fw-bold ">
+            Speaker UserName
+        </div>
+        <div class="col-6 ">
+            {{sp.username}}
+        </div>
+    </div>
+    <hr>    
+
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-6 fw-bold ">
+            Speaker Email
+        </div>
+        <div class="col-6 ">
+            {{sp.email}}
+        </div>
+    </div>
+    <hr>
+    
+    <div class=" my-4 row fs-3 mx-5 ">
+        <div class="col-6 fw-bold ">
+            Speaker Id
+        </div>
+        <div class="col-6 ">
+            {{sp._id}}
+        </div>
+    </div>
+    <hr>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-6 fw-bold ">
+            Speaker Password
+        </div>
+        <div class="col-6 ">
+            ●●●●●●●
+        </div>
+    </div>
+    <hr>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-6 fw-bold ">
+            Speaker Address :
+        </div>
+        <div class="col-6 ">
+            
+        </div>
+    </div>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-2 ">
+        </div>
+        <div class="col-4 fw-bold ">
+             City 
+        </div>
+        <div class="col-6 ">
+            {{sp.address.city}}
+        </div>
+    </div>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-2 ">
+    </div>
+        <div class="col-4 fw-bold ">
+             Street 
+        </div>
+        <div class="col-6 ">
+            {{sp.address.street}}
+            
+        </div>
+    </div>
+    <div class=" row fs-3 mx-5 my-4 ">
+        <div class="col-2 ">
+        </div>
+        <div class="col-4 fw-bold ">
+             building 
+        </div>
+        <div class="col-6 ">
+            {{sp.address.building}}
+            
+        </div>
+    </div>
+    <hr>
+
+</div>
+</div>

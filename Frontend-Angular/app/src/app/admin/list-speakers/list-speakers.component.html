@@ -1,0 +1,48 @@
+<app-nav-bar-admin></app-nav-bar-admin>
+
+<div class="container bg-light">
+        
+    <div class="  row fs-1   ">
+        <div class="col-9 my-5 text-primary fw-bold" >
+            Speakers
+        </div>
+    </div>
+<hr>
+
+<table class="fs-3 table table-striped table-sm table-bordered table-hover table-inverse table-inverse table-responsive">
+    <thead class="thead-inverse thead-default">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th  scope="col">City</th> 
+            <th class="mx-2" scope="col">Street</th>  
+            <th scope="col">Building</th>  
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+             <tr *ngFor="let item of std">
+                <td scope="row">{{item._id}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.address.city}}</td>
+                <td>
+                    {{item.address.street}}
+                </td>
+                <td>
+                    {{item.address.building}}
+                </td>
+                
+                <td> 
+                    <a class="btn btn-success fs-3 mx-3" [routerLink]="['edit',item._id]"> Edit </a>    
+                    <a class="btn btn-danger fs-3"   (click)="del(item._id)"> Delete </a>    
+                    <!-- <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+                        Content
+                    </p-confirmDialog>
+                    <p-confirmDialog aria-valuetext="Delete" header="Confirmation" icon="pi pi-exclamation-triangle" ></p-confirmDialog>    
+                -->
+                </td>  
+            </tr> 
+        </tbody>
+</table>
